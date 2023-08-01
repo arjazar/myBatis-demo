@@ -1,0 +1,33 @@
+<!-- TaskMapper.xml -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TaskMapper">
+    <resultMap id="taskMap" type="com.example.demo.models.Task">
+        <id property="taskId" column="taskId"/>
+        <result property="taskTitle" column="taskTitle"/>
+        <result property="taskDescription" column="taskDescription"/>
+        <result property="taskDueDate" column="taskDueDate"/>
+        <result property="taskStatus" column="taskStatus"/>
+    </resultMap>
+
+    <select id="getTaskById" parameterType="long" resultMap="taskMap">
+        SELECT * FROM tasks WHERE taskId = #{taskId}
+    </select>
+    <select id="getAllTasks" resultMap="taskMap">
+        SELECT taskId, taskTitle, taskDescription, taskDueDate, taskStatus FROM tasks
+    </select>
+    <delete id="deleteTask">
+        DELETE FROM tasks
+        WHERE taskId = #{taskId}
+    </delete>
+    <insert id="insertTask" parameterType="com.example.demo.models.Task" useGeneratedKeys="true" keyProperty="taskId">
+        INSERT INTO tasks (taskTitle, taskDescription, taskDueDate, taskStatus)
+        VALUES (#{taskTitle}, #{taskDescription}, #{taskDueDate}, #{taskStatus})
+    </insert>
+    <update id="updateTask" parameterType="com.example.demo.models.Task">
+        UPDATE tasks
+        SET taskTitle = #{taskTitle}, taskDescription = #{taskDescription}, taskDueDate = #{taskDueDate}, taskStatus = #{taskStatus}
+        WHERE taskId = #{taskId}
+    </update>
+</mapper>

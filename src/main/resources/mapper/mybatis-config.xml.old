@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties>
+        <property name="driver" value="com.ibm.db2.jcc.DB2Driver"/>
+    </properties>
+    <!-- Environment settings for database -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="url" value="jdbc:db2://a4317b7b-e738-412f-b64c-26d69e747e91.bv7e8rbf0shslbo0krsg.databases.appdomain.cloud:31107/bludb:user=3df68344;password=fVaf9jpMyhHS0Gtk;sslConnection=true" />
+                <property name="username" value="3df68344" />
+                <property name="password" value="fVaf9jpMyhHS0Gtk" />
+            </dataSource>
+        </environment>
+    </environments>
+
+</configuration>
